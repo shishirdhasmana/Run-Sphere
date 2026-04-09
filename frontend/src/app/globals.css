@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #FC4C02; /* Strava Orange */
+  --color-brand-light: #FF6A28;
+  --color-brand-dark: #cc3d02;
+  --color-background-dark: #0a0a0a;
+  --color-surface-dark: #141414;
+  --color-surface-hover: #1f1f1f;
+  --color-border-dark: #2a2a2a;
+  --color-text-primary: #ededed;
+  --color-text-secondary: #a1a1aa;
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glass-morphism Utilities */
+.glass-panel {
+  @apply bg-[#141414]/80 backdrop-blur-xl border border-[#2a2a2a] shadow-xl;
+}
+
+.glass-card {
+  @apply bg-[#141414]/60 backdrop-blur-md border border-[#2a2a2a] rounded-2xl shadow-lg transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply bg-[#1f1f1f]/80 border-[#3f3f3f] -translate-y-1 shadow-[0_8px_30px_rgb(0,0,0,0.5)];
+}
+
+/* Base Components */
+.btn-primary {
+  @apply flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-brand-light shadow-[0_0_20px_rgba(252,76,2,0.4)] scale-105;
+}
+
+.btn-primary:active {
+  @apply scale-95;
+}
+
+.btn-outline {
+  @apply flex items-center justify-center gap-2 rounded-full border-2 border-brand px-6 py-3 font-semibold text-brand transition-all duration-300;
+}
+
+.btn-outline:hover {
+  @apply bg-brand/10 shadow-[0_0_15px_rgba(252,76,2,0.2)];
+}
+
+.input-field {
+  @apply w-full rounded-xl bg-black/50 border border-border-dark px-4 py-3 text-text-primary outline-none transition-all duration-300 focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-text-secondary/50;
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s infinite alternate;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .stagger-1 { animation-delay: 100ms; }
+  .stagger-2 { animation-delay: 200ms; }
+  .stagger-3 { animation-delay: 300ms; }
+  .stagger-4 { animation-delay: 400ms; }
+  .stagger-5 { animation-delay: 500ms; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 10px rgba(252, 76, 2, 0.2);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(252, 76, 2, 0.6);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f4f4f;
+}
