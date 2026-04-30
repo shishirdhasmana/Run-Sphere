@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Map as MapIcon, History, LogOut, Hexagon, User } from 'lucide-react';
+import { LayoutDashboard, Map as MapIcon, History, LogOut, Hexagon, User, Target } from 'lucide-react';
 import { logout } from '@/lib/auth';
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
@@ -24,6 +24,7 @@ export default function Sidebar() {
 
   const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Goal Planner', href: '/dashboard/planner', icon: Target },
   { name: 'Territory Map', href: '/dashboard/map', icon: MapIcon },
   { name: 'Run History', href: '/dashboard/runs', icon: History },
   { name: 'Leaderboard', href: '/dashboard/leaderboard', icon: Hexagon }];
